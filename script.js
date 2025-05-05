@@ -10,6 +10,14 @@ const statusEl = document.getElementById("status");
 const serveCustomerBtn = document.getElementById("serve-customer");
 const upgradeMachineBtn = document.getElementById("upgrade-machine");
 const machineListEl = document.getElementById("machine-list");
+const notificationsEl = document.getElementById("notifications");
+
+// Function to show notifications
+function showNotification(message) {
+  statusEl.textContent = message;
+  notificationsEl.classList.add("show");
+  setTimeout(() => notificationsEl.classList.remove("show"), 2000);
+}
 
 // Function to update the machine display
 function updateMachinesDisplay() {
@@ -17,6 +25,7 @@ function updateMachinesDisplay() {
   for (let i = 0; i < machines; i++) {
     const machine = document.createElement("div");
     machine.className = "machine";
+    machine.textContent = "🧺"; // Use a laundry basket emoji
     machineListEl.appendChild(machine);
   }
 }
@@ -26,8 +35,7 @@ serveCustomerBtn.addEventListener("click", () => {
   const income = customerIncome * machines;
   money += income;
   moneyEl.textContent = money;
-  statusEl.textContent = `You earned $${income} from a customer!`;
-  setTimeout(() => (statusEl.textContent = ""), 2000);
+  showNotification(`You earned $${income} from a customer!`);
 });
 
 // Upgrade machine action
@@ -39,12 +47,10 @@ upgradeMachineBtn.addEventListener("click", () => {
     machinesEl.textContent = machines;
     machineUpgradeCost = Math.floor(machineUpgradeCost * 1.5);
     upgradeMachineBtn.textContent = `Upgrade Machine ($${machineUpgradeCost})`;
-    statusEl.textContent = `You upgraded a machine!`;
     updateMachinesDisplay(); // Update machines display
-    setTimeout(() => (statusEl.textContent = ""), 2000);
+    showNotification("You upgraded a machine!");
   } else {
-    statusEl.textContent = "Not enough money to upgrade!";
-    setTimeout(() => (statusEl.textContent = ""), 2000);
+    showNotification("Not enough money to upgrade!");
   }
 });
 
