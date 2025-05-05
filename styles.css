@@ -6,10 +6,28 @@ body {
   background-size: cover;
   color: white;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   height: 100vh;
   position: relative;
+}
+
+#notifications {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  text-align: center;
+  display: none;
+}
+
+#notifications.show {
+  display: block;
 }
 
 #game-container {
@@ -17,13 +35,15 @@ body {
   border: 2px solid #ddd;
   border-radius: 10px;
   padding: 20px;
-  width: 300px;
+  width: 400px;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2 {
-  margin-bottom: 20px;
+#buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
 }
 
 button {
@@ -31,7 +51,6 @@ button {
   color: white;
   border: none;
   padding: 10px 20px;
-  margin: 10px 0;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
@@ -46,15 +65,28 @@ button:hover:enabled {
   background-color: #0056b3;
 }
 
-#notifications {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(0, 0, 0, 0.8);
-  padding: 10px;
-  border: 1px solid #ddd;
+#machine-area {
+  margin-top: 30px;
+}
+
+#machine-list {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.machine {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  background-color: #007bff;
+  border: 2px solid white;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #stats {
@@ -66,20 +98,6 @@ button:hover:enabled {
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-#machine-list {
-  margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-}
-
-.machine {
-  width: 50px;
-  height: 50px;
-  background-color: #007bff;
-  border: 2px solid white;
-  border-radius: 5px;
+  width: 150px;
+  text-align: right;
 }
