@@ -7,21 +7,23 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div id="notifications">
+    <p id="status"></p>
+  </div>
   <div id="game-container">
     <h1>Chinese Laundry Mat</h1>
-    <div id="notifications">
-      <p id="status"></p>
+    <div id="buttons">
+      <button id="serve-customer">Serve Customer</button>
+      <button id="upgrade-machine">Upgrade Machine ($50)</button>
     </div>
-    <button id="serve-customer">Serve Customer</button>
-    <button id="upgrade-machine">Upgrade Machine ($50)</button>
+    <div id="machine-area">
+      <h2>Your Machines</h2>
+      <div id="machine-list"></div>
+    </div>
   </div>
   <div id="stats">
     <p>Money: $<span id="money">0</span></p>
     <p>Machines: <span id="machines">1</span></p>
-  </div>
-  <div id="machines-container">
-    <h2>Machines</h2>
-    <div id="machine-list"></div>
   </div>
   <script src="script.js"></script>
 </body>
