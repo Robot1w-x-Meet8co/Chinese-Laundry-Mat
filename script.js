@@ -9,6 +9,17 @@ const machinesEl = document.getElementById("machines");
 const statusEl = document.getElementById("status");
 const serveCustomerBtn = document.getElementById("serve-customer");
 const upgradeMachineBtn = document.getElementById("upgrade-machine");
+const machineListEl = document.getElementById("machine-list");
+
+// Function to update the machine display
+function updateMachinesDisplay() {
+  machineListEl.innerHTML = ""; // Clear the machine list
+  for (let i = 0; i < machines; i++) {
+    const machine = document.createElement("div");
+    machine.className = "machine";
+    machineListEl.appendChild(machine);
+  }
+}
 
 // Serve customer action
 serveCustomerBtn.addEventListener("click", () => {
@@ -29,6 +40,7 @@ upgradeMachineBtn.addEventListener("click", () => {
     machineUpgradeCost = Math.floor(machineUpgradeCost * 1.5);
     upgradeMachineBtn.textContent = `Upgrade Machine ($${machineUpgradeCost})`;
     statusEl.textContent = `You upgraded a machine!`;
+    updateMachinesDisplay(); // Update machines display
     setTimeout(() => (statusEl.textContent = ""), 2000);
   } else {
     statusEl.textContent = "Not enough money to upgrade!";
@@ -40,3 +52,6 @@ upgradeMachineBtn.addEventListener("click", () => {
 setInterval(() => {
   upgradeMachineBtn.disabled = money < machineUpgradeCost;
 }, 100);
+
+// Initial setup
+updateMachinesDisplay();
